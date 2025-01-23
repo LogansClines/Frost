@@ -55,9 +55,9 @@ class RCELogger {
         this.logToFile(logType.prefix, message);
         if (this.logLevel !== constants_1.LogLevel.None && level <= this.logLevel) {
             const date = new Date();
-            const timestamp = date.toLocaleTimeString([], { hour12: false });
+            const timestamp = date.toLocaleTimeString([], { hour12: true });
             const padding = " ".repeat(Math.max(0, 15 - logType.prefix.length));
-            const formattedMessage = `\x1b[90m[${timestamp}]\x1b[0m ${logType.color}${logType.prefix}${padding}${logType.emoji}${ConsoleColor.Reset}`;
+            const formattedMessage = `\x1b[90m[${timestamp}]\x1b[0m ${logType.color}${logType.prefix}${padding}${logType.emoji} ${ConsoleColor.Reset}`;
             console.log(formattedMessage, this.format(message));
         }
     }
